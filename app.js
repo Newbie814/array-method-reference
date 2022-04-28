@@ -1,31 +1,43 @@
-// slice() modifies the original array
-// first argument specifies the array position for insertion or deletion if just one argument, would delete from that position onwards
-// second argument specifies the number of elements to be deleted
-// deleted elements are returned in array
-// any additional arguments are inserted at the position specified by the first argument
+// copying elements within an array (copy from one part of the arrat to another)
+
+// copyWithin(target, start[, end])   //first argument is where we want it copied to, second indicates element to start (inclusive)copying from, third is optional, indicates element to stop copying at
 
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-let returnArray = arr.splice(2);
+// exercise:
 
-console.log(returnArray); // [3, 4, 5, 6, 7, 8, 9, 10]
+//Make a sorted version of the growthRate array. Make sure to clone it first, so that you can maintain the order of the original data. Sort so the lowest number comes first. Try using chaining with this exercise.
 
-let arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let growthRate = [1.1, 0.5, -0.1, 0.3, 1.2, 1.5, 2.1, 0.8, 1.5, 0.3, -0.4];
 
-let returnArray2 = arr2.splice(2, 3);
+let sortedGrowthRate = [...growthRate].slice().sort((a, b) => a - b);
+console.log(sortedGrowthRate);
+console.log(growthRate);
 
-console.log(returnArray2); // [3, 4, 5]
+//Make a clone of the months array, then sort it and extract all the months that start with 'J' into a subarray. Try using chaining with this exercise.
 
-let arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
-let returnArray3 = arr3.splice(2, 3, 'a', 'b', 'c');
+let sortedJayMonths = [...months]
+  .sort(function (a, b) {
+    if (a.toLowerCase() < b.toLowerCase()) return -1;
+    if (a.toLowerCase() > b.toLowerCase()) return 1;
+    return 0;
+  })
+  .splice(4, 3);
 
-console.log(arr3); //[1, 2, 'a', 'b', 'c', 6, 7, 8, 9, 10]
-console.log(returnArray3); // [3, 4, 5]
-
-let arr4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-let returnArray4 = arr4.splice(2, 3, ['a', 'b', 'c']);
-
-console.log(arr4); //[1, 2, Array(3), 6, 7, 8, 9, 10]  ---- Array(3) is a nested array with a, b, and c
-console.log(returnArray4); // [3, 4, 5]
+console.log(sortedJayMonths);
+console.log(months);
